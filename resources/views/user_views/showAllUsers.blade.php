@@ -7,7 +7,7 @@
     style="background-color:rgb(235, 233, 233)">Go Back</a> 
     <div class="row justify-content-center">
         <div class="col-9" >
-    {{--------- show tweet section -------}}
+    {{--------- show all users section -------}}
             @foreach ($users as $user)
             <div class="card" style="margin:20px;">
                 <div class="card-body">
@@ -23,7 +23,8 @@
                     </div>
                     
                     <div class="p-2 d-inline" >
-                    <a href="{{ route('show-specific-user-profile' , $user->id)}}" class="btn btn-lg" style="font-size:18pt">{{$user->name}}</a>
+                    <a href="{{ route('show-specific-user-profile' , $user->id)}}" 
+                        class="btn btn-lg" style="font-size:18pt">{{$user->name}}</a>
                     </div>
                 </div>
             </div>

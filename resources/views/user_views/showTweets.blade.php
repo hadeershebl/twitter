@@ -11,6 +11,7 @@ use App\Http\Controllers\TweetController;
     
     <div class="row justify-content-center">
         <div class="col-md-8" >
+  {{------- show specific alert section ------}}
 @if (session('delete_success') != null) 
   <div class="alert alert-success alert-dismissible fade show" role="alert">
     <strong>{{ session('delete_success')}}</strong>
@@ -37,6 +38,7 @@ use App\Http\Controllers\TweetController;
   </button>
 </div>
 @endif
+
     {{--------- show tweet section -------}}
 
     @foreach ($tweets as $tweet)
@@ -70,14 +72,16 @@ use App\Http\Controllers\TweetController;
 
             </div>
         </div>
+         {{-- get number of likes for each tweet(call function) --}}
         @php
         $Tweet = new TweetController();
         $is_like = $Tweet->is_like($tweet->id);
         $num_likes = $Tweet->get_number_of_likes($tweet->id);
-@endphp
+        @endphp
 <div class="card-footer text-muted" style="font-size: 13pt">
  {{$num_likes}} likes
 
+ {{-- like btn --}}
  @if ($is_like ==true)
  <form action="{{Route('unlikeTweet',$tweet->id)}}" method="POST">
  @csrf

@@ -9,7 +9,7 @@ use App\Http\Controllers\TweetController;
     Go Back</a>
 <div class="container">
    
-     <!-- Header -->
+     {{-- <!-- user information section --> --}}
      <div class="media " style="background-color:white">
         <img class="mr-3 rounded-left" src="{{asset($user->avatar)}}" 
         alt="Generic placeholder image" style="width: 150px; height:150px">
@@ -56,8 +56,9 @@ use App\Http\Controllers\TweetController;
           </div>
         </div>
 
-      <!-- Header -->
+      {{-- <!-- ---------------------- --> --}}
     
+      {{-- show user's tweets section --}}
       <div class="row justify-content-center">
         <div class="col-9">
             @foreach ($userTweets as $tweet)
@@ -75,14 +76,17 @@ use App\Http\Controllers\TweetController;
                             {{$tweet->tweet}}
                     </div>
                 </div>
+
+                {{-- get number of likes for each tweet(call function) --}}
                 @php
                 $Tweet = new TweetController();
                 $is_like = $Tweet->is_like($tweet->id);
                 $num_likes = $Tweet->get_number_of_likes($tweet->id);
-     @endphp
-     <div class="card-footer text-muted">
+             @endphp
+       <div class="card-footer text-muted">
          {{$num_likes}} likes
 
+         {{-- like btn section --}}
          @if ($is_like ==true)
          <form action="{{Route('unlikeTweet',$tweet->id)}}" method="POST">
          @csrf

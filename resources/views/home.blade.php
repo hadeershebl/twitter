@@ -52,6 +52,7 @@ $tweets = $following->get_followings_tweets();
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div>
+        {{-- show loged in user's tweets section --}}
     @foreach ($tweets as $tweet)
     <div class="card" style="margin:20px;">
         <div class="card-header">
@@ -83,7 +84,7 @@ $tweets = $following->get_followings_tweets();
 
             </div>
         </div>
-
+ {{-- get number of likes for each tweet(call function) --}}
         @php
                    $Tweet = new TweetController();
                    $is_like = $Tweet->is_like($tweet->id);
@@ -92,6 +93,7 @@ $tweets = $following->get_followings_tweets();
         <div class="card-footer text-muted">
             {{$num_likes}} likes
 
+            {{-- like btn --}}
             @if ($is_like ==true)
             <form action="{{Route('unlikeTweet',$tweet->id)}}" method="POST">
             @csrf

@@ -13,7 +13,8 @@ use App\Http\Controllers\FollowingController;
 
 class UserController extends Controller
 {
-    public function manageProfile($userId){
+    public function manageProfile($userId)
+    {
         $record = User::findOrFail($userId);
         return view('/user_views/manageProfile' , ['record' => $record]);
     }
@@ -45,7 +46,8 @@ class UserController extends Controller
         return view('/home');
     }
 
-    public function showUsers($userId){
+    public function showUsers($userId)
+    {
         $users = DB::table('users')->where('id', '!=', $userId)->get();
 
         return view('user_views.showAllUsers' , ['users' => $users]);

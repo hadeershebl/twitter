@@ -7,7 +7,7 @@
         style="background-color:rgb(235, 233, 233)">Go Back</a>    
     <div class="row justify-content-center">
         <div class="col-md-8" >
-    {{--------- show specific tweet section -------}}
+    {{--------- show specific tweet and update it section  -------}}
             
     <h2>Edit Your Owen Tweet</h2>
         <div class="card" style="margin:20px;">
